@@ -5,8 +5,6 @@
  * 
  */
 
- //TODO: README
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,6 +37,8 @@ public class GridMonitor implements GridMonitorInterface {
 
     // public static void main(String[] args) throws FileNotFoundException {
     // GridMonitor monitor = new GridMonitor("sample.txt");
+
+    // System.out.println(monitor.toString());
 
     // monitor.getBaseGrid();
 
@@ -73,17 +73,25 @@ public class GridMonitor implements GridMonitorInterface {
         if (baseGrid == null) {
             getBaseGrid();
         }
+        if (dangerGrid == null) {
+            getDangerGrid();
+        }
 
 
-        String baseString = null;
+        String baseString = "Base Grid:\n";
+        String dangerString = "Danger Detected in these grids:\n";
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 baseString += baseGrid[i][j] + " ";
+                dangerString += dangerGrid[i][j] + " ";
             }
+            baseString += "\n";
+            dangerString += "\n";
+
         }
 
-        return baseString;
+        return baseString + "\n" + dangerString;
 
     }
 
